@@ -1,0 +1,38 @@
+PlatformConfig: null
+metadata:
+  labels:
+    nuclio.io/app: functionres
+    nuclio.io/class: function
+    nuclio.io/function-name: gg
+    nuclio.io/function-version: latest
+    nuclio.io/project-name: local
+  name: gg
+  namespace: nuclio
+spec:
+  alias: latest
+  build:
+    codeEntryType: image
+    runtimeAttributes:
+      repositories: []
+  eventTimeout: ""
+  handler: main:Handler
+  image: docker.io/papandadj/golangnuclio:v1
+  imageHash: "1654139074631366163"
+  loggerSinks:
+    - level: debug
+  platform: {}
+  resources:
+    requests:
+      cpu: 25m
+      memory: 1Mi
+  runtime: golang
+  securityContext: {}
+  triggers:
+    default-http:
+      attributes:
+        serviceType: ClusterIP
+      class: ""
+      kind: http
+      maxWorkers: 1
+      name: default-http
+  version: -1

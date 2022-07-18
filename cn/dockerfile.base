@@ -1,0 +1,2 @@
+FROM  golang:1.17
+ONBUILD ENV GOPROXY https://goproxy.cn

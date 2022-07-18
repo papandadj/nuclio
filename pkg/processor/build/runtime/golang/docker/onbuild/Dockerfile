@@ -33,18 +33,18 @@ RUN GOOS=$GOOS GOARCH=$GOARCH go build \
 # Build the plugin
 FROM ${NUCLIO_BASE_IMAGE_NAME}:${NUCLIO_BASE_IMAGE_TAG}
 
-ARG NUCLIO_GO_PROXY=${NUCLIO_GO_PROXY}
-# Set go proxy env
-ENV GOPROXY $NUCLIO_GO_PROXY
+# ARG NUCLIO_GO_PROXY=${NUCLIO_GO_PROXY}
+# # Set go proxy env
+# ENV GOPROXY $NUCLIO_GO_PROXY
 
-# Update packages
-RUN apt-get update && \
-    apt-get -s dist-upgrade | \
-    grep "^Inst" | \
-    grep -i securi | \
-    awk -F " " {'print $2'} | \
-    xargs apt-get install -y --no-install-recommends && \
-    rm -rf /var/lib/apt/lists/*
+# # Update packages
+# RUN apt-get update && \
+#     apt-get -s dist-upgrade | \
+#     grep "^Inst" | \
+#     grep -i securi | \
+#     awk -F " " {'print $2'} | \
+#     xargs apt-get install -y --no-install-recommends && \
+#     rm -rf /var/lib/apt/lists/*
 
 # Store processor binary
 COPY --from=build-processor /home/nuclio/bin/processor /home/nuclio/bin/processor
